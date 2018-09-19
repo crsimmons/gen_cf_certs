@@ -1,0 +1,16 @@
+variables:
+- name: default_ca
+  type: certificate
+  options:
+    is_ca: true
+    common_name: bosh_ca
+- name: cert
+  type: certificate
+  options:
+    ca: default_ca
+    common_name: "*.((domain))"
+    alternative_names:
+    - "*.apps.((domain))"
+    - "*.system.((domain))"
+    - "*.login.system.((domain))"
+    - "*.uaa.system.((domain))"
